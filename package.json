@@ -1,0 +1,30 @@
+{
+  "name": "sqs-aws",
+  "version": "1.0.0",
+  "description": "Simple SQS project",
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.321.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliorenner/sqs-aws.git"
+  },
+  "keywords": [
+    "sqs",
+    "aws"
+  ],
+  "author": "Julio Renner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliorenner/sqs-aws/issues"
+  },
+  "homepage": "https://github.com/juliorenner/sqs-aws#readme"
+}

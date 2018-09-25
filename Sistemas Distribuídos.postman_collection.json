@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "fc17a95a-5498-40b8-a3fa-18da5e8b32ad",
+		"name": "Sistemas Distribuídos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Queues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9338bc5b-e4f1-41b9-9648-f8e88133457d",
+						"type": "text/javascript",
+						"exec": [
+							"var response = pm.response.json()",
+							"if(response.QueueUrls) {",
+							"    pm.globals.set(\"QUEUE_URL\", response.QueueUrls[0])",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8000/queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"queue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a73810fb-766b-48ba-91da-b3bdf024151f",
+						"type": "text/javascript",
+						"exec": [
+							"var response = pm.response.json()",
+							"if(response.QueueUrls) {",
+							"    pm.globals.set(\"QUEUE_URL\", response.QueueUrls[0])",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Olar\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"queue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Queue",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"queueUrl\": \"{{QUEUE_URL}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"queue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Teste 1\",\n\t\"author\": \"Julio Renner\",\n\t\"message\": \"Olar olar\",\n\t\"queueUrl\": \"{{QUEUE_URL}}\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consume Message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8000/message/\"{{QUEUE_URL}}\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"message",
+						"\"{{QUEUE_URL}}\""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ea96db46-4d05-4248-a721-b4731c58d8d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2874c4ab-116c-49de-9046-572a113672a8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
